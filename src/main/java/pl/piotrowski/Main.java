@@ -1,14 +1,24 @@
 package pl.piotrowski;
 
 import com.google.gson.Gson;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
+import java.io.IOException;
 
 public class Main {
-        public static void main(String[] args) {
-            Gson gson = new Gson();
-            String json = "{\"imie\": \"Jacek\",\"wiek\": 10, \"adres\": {\"ulica\": \"xxxx\",\"numerDomu\": 1 }, \"dzieci\": null,\"czyMaDzieci\": false,\"tagi\": [\"developer\", \"cos\", \"cos2\"]}";
-            Uzytkownik jacek = gson.fromJson(json, Uzytkownik.class);
-            System.out.println(jacek.imie);
-            System.out.println(jacek.wiek);
-            System.out.println(jacek.adres.ulica);
+        public static void main(String[] args) throws IOException {
+
+            OkHttpClient client = new OkHttpClient();
+
+            Request request = new Request.Builder()
+                    .url("http://serwis.mobilotto.pl/mapi_v6/index.php?json=getGames")
+                    .build();
+
+            Response response = client.newCall(request).execute();
+            System.out.println(response.body().string());
+
+
         }
 }
