@@ -1,14 +1,10 @@
 
-package pl.witkows;
+package pl.witkows.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class EJ {
-
-    @SerializedName("extra")
-    @Expose
-    private String extra;
+public class Mini {
     @SerializedName("numerki")
     @Expose
     private String numerki;
@@ -21,14 +17,6 @@ public class EJ {
     @SerializedName("superszansa_id")
     @Expose
     private Object superszansaId;
-
-    public String getExtra() {
-        return extra;
-    }
-
-    public void setExtra(String extra) {
-        this.extra = extra;
-    }
 
     public String getNumerki() {
         return numerki;

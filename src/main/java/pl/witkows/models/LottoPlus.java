@@ -1,10 +1,10 @@
 
-package pl.witkows;
+package pl.witkows.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Kaskada2 {
+public class LottoPlus {
 
     @SerializedName("numerki")
     @Expose
@@ -17,7 +17,7 @@ public class Kaskada2 {
     private String dataLosowania;
     @SerializedName("superszansa_id")
     @Expose
-    private String superszansaId;
+    private Object superszansaId;
 
     public String getNumerki() {
         return numerki;
@@ -43,11 +43,11 @@ public class Kaskada2 {
         this.dataLosowania = dataLosowania;
     }
 
-    public String getSuperszansaId() {
+    public Object getSuperszansaId() {
         return superszansaId;
     }
 
-    public void setSuperszansaId(String superszansaId) {
+    public void setSuperszansaId(Object superszansaId) {
         this.superszansaId = superszansaId;
     }
 

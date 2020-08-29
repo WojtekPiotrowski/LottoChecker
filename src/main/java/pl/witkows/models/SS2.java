@@ -1,14 +1,11 @@
 
-package pl.witkows;
+package pl.witkows.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class MM2 {
+public class SS2 {
 
-    @SerializedName("plus")
-    @Expose
-    private String plus;
     @SerializedName("numerki")
     @Expose
     private String numerki;
@@ -20,15 +17,7 @@ public class MM2 {
     private String dataLosowania;
     @SerializedName("superszansa_id")
     @Expose
-    private String superszansaId;
-
-    public String getPlus() {
-        return plus;
-    }
-
-    public void setPlus(String plus) {
-        this.plus = plus;
-    }
+    private Object superszansaId;
 
     public String getNumerki() {
         return numerki;
@@ -54,11 +43,11 @@ public class MM2 {
         this.dataLosowania = dataLosowania;
     }
 
-    public String getSuperszansaId() {
+    public Object getSuperszansaId() {
         return superszansaId;
     }
 
-    public void setSuperszansaId(String superszansaId) {
+    public void setSuperszansaId(Object superszansaId) {
         this.superszansaId = superszansaId;
     }
 

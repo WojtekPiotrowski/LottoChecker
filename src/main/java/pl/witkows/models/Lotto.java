@@ -1,11 +1,12 @@
 
-package pl.witkows;
+package pl.witkows.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Kaskada1 {
+import java.time.LocalDateTime;
 
+public class Lotto {
     @SerializedName("numerki")
     @Expose
     private String numerki;
@@ -14,10 +15,10 @@ public class Kaskada1 {
     private String numLosowania;
     @SerializedName("data_losowania")
     @Expose
-    private String dataLosowania;
+    private LocalDateTime dataLosowania;
     @SerializedName("superszansa_id")
     @Expose
-    private String superszansaId;
+    private Object superszansaId;
 
     public String getNumerki() {
         return numerki;
@@ -35,19 +36,19 @@ public class Kaskada1 {
         this.numLosowania = numLosowania;
     }
 
-    public String getDataLosowania() {
+    public LocalDateTime getDataLosowania() {
         return dataLosowania;
     }
 
-    public void setDataLosowania(String dataLosowania) {
+    public void setDataLosowania(LocalDateTime dataLosowania) {
         this.dataLosowania = dataLosowania;
     }
 
-    public String getSuperszansaId() {
+    public Object getSuperszansaId() {
         return superszansaId;
     }
 
-    public void setSuperszansaId(String superszansaId) {
+    public void setSuperszansaId(Object superszansaId) {
         this.superszansaId = superszansaId;
     }
 

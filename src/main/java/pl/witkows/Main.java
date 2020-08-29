@@ -1,17 +1,40 @@
 package pl.witkows;
 
-import com.google.gson.Gson;
+import com.google.gson.*;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import pl.witkows.models.Games;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
+    static  Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new JsonDeserializer<LocalDateTime>() {
+        private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-    public static void main(String[] args) {
-        Gson gson = new Gson();
-        String json = "{\"imie\": \"Jacek\",\"wiek\": 10, \"adres\": {\"ulica\": \"xxxx\",\"numerDomu\": 1 }, \"dzieci\": null,\"czyMaDzieci\": false,\"tagi\": [\"developer\", \"cos\", \"cos2\"]}";
+        @Override
+        public LocalDateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+                throws JsonParseException {
+            return LocalDateTime.parse(json.getAsString(), formatter);
+        }
+    }).create();
 
-        Uzytkownik jacek = gson.fromJson(json, Uzytkownik.class);
+    public static void main(String[] args) throws IOException {
+        OkHttpClient client = new OkHttpClient();
 
-        System.out.println(jacek.imie);
-        System.out.println(jacek.wiek);
-        System.out.println(jacek.adres.ulica);
+        Request request = new Request.Builder()
+                .url("http://serwis.mobilotto.pl/mapi_v6/index.php?json=getGames")
+                .build();
+
+        Response response = client.newCall(request).execute();
+        String jsonString = response.body().string();
+
+        Games games = gson.fromJson(jsonString, Games.class);
+        games.getLotto().getNumerki();
+
+        System.out.println("Numery duzego lotka to: " + games.getLotto().getNumerki());
     }
 }

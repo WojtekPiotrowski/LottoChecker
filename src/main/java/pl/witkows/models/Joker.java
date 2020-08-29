@@ -1,11 +1,14 @@
 
-package pl.witkows;
+package pl.witkows.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LottoPlus {
+public class Joker {
 
+    @SerializedName("joker")
+    @Expose
+    private String joker;
     @SerializedName("numerki")
     @Expose
     private String numerki;
@@ -18,6 +21,14 @@ public class LottoPlus {
     @SerializedName("superszansa_id")
     @Expose
     private Object superszansaId;
+
+    public String getJoker() {
+        return joker;
+    }
+
+    public void setJoker(String joker) {
+        this.joker = joker;
+    }
 
     public String getNumerki() {
         return numerki;

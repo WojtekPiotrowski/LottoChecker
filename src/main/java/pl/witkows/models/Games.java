@@ -1,5 +1,5 @@
 
-package pl.witkows;
+package pl.witkows.models;
 
 import java.util.ArrayList;
 import java.util.List;

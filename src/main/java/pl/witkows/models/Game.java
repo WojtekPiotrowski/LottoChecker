@@ -1,11 +1,10 @@
 
-package pl.witkows;
+package pl.witkows.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Superszansa {
-
+public class Game {
     @SerializedName("numerki")
     @Expose
     private String numerki;
