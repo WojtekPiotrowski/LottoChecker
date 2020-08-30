@@ -1,16 +1,16 @@
 package pl.witkows;
 
-import pl.witkows.api.GamesApi;
-import pl.witkows.api.LottoGamesApi;
-import pl.witkows.models.Games;
+import pl.witkows.checkResult.*;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        GamesApi cloudApi = new LottoGamesApi();
-        Games games = cloudApi.getNewestGames();
-        System.out.println(games.getLotto().getNumerki());
+        InputSource source = new RandomNumberGenerator(GameType.LOTTO);
+        NumbersChecker numbersChecker = new NumbersChecker(source);
+        List<Integer> winNumbers = numbersChecker.checkLottoGame();
+        System.out.println(winNumbers);
     }
 }

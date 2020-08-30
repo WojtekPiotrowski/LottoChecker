@@ -3,6 +3,7 @@ package pl.witkows.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import pl.witkows.checkResult.NumberConverter;
 
 import java.time.LocalDateTime;
 
@@ -24,31 +25,19 @@ public class Game {
         return numerki;
     }
 
-    public void setNumerki(String numerki) {
-        this.numerki = numerki;
-    }
-
     public String getNumLosowania() {
         return numLosowania;
-    }
-
-    public void setNumLosowania(String numLosowania) {
-        this.numLosowania = numLosowania;
     }
 
     public LocalDateTime getDataLosowania() {
         return dataLosowania;
     }
 
-    public void setDataLosowania(LocalDateTime dataLosowania) {
-        this.dataLosowania = dataLosowania;
-    }
-
     public Object getSuperszansaId() {
         return superszansaId;
     }
 
-    public void setSuperszansaId(Object superszansaId) {
-        this.superszansaId = superszansaId;
+    public int[] getSortedNumbers() {
+        return NumberConverter.parseToIntTab(numerki);
     }
 }
