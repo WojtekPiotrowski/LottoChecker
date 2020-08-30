@@ -5,21 +5,42 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import pl.witkows.checkResult.NumberConverter;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
+@Entity
 public class Game {
-    @SerializedName("numerki")
-    @Expose
-    private String numerki;
+
+    @Id
+    @Column(unique = true, nullable = false)
     @SerializedName("num_losowania")
     @Expose
     private String numLosowania;
+
+    @SerializedName("numerki")
+    @Expose
+    private String numerki;
+
     @SerializedName("data_losowania")
     @Expose
     private LocalDateTime dataLosowania;
+
     @SerializedName("superszansa_id")
     @Expose
-    private Object superszansaId;
+    private String superszansaId;
+
+
+    public Game() {
+    }
+
+    public Game(String numLosowania, String numerki, LocalDateTime dataLosowania, String superszansaId) {
+        this.numLosowania = numLosowania;
+        this.numerki = numerki;
+        this.dataLosowania = dataLosowania;
+        this.superszansaId = superszansaId;
+    }
 
     public String getNumerki() {
         return numerki;
@@ -33,11 +54,21 @@ public class Game {
         return dataLosowania;
     }
 
-    public Object getSuperszansaId() {
+    public String getSuperszansaId() {
         return superszansaId;
     }
 
     public int[] getSortedNumbers() {
         return NumberConverter.parseToIntTab(numerki);
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "numLosowania='" + numLosowania + '\'' +
+                ", numerki='" + numerki + '\'' +
+                ", dataLosowania=" + dataLosowania +
+                ", superszansaId='" + superszansaId + '\'' +
+                '}';
     }
 }

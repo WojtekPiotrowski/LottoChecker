@@ -43,15 +43,6 @@ public class UserInputTest {
         Assert.assertEquals(result.length, 0);
     }
 
-    @Test
-    public void should_return_empty_array_when_input_is_only_comas() {
-        Mockito.when(inputSource.getInput()).thenReturn(",,,,,,,,");
-
-        int[] result = sut.getSortedNumbers();
-
-        Assert.assertNotNull(result);
-        Assert.assertEquals(result.length, 0);
-    }
 
 
     @Test
