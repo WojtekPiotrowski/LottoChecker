@@ -20,8 +20,16 @@ public class NumberConverter {
         int[] result = new int[numbersTab.length];
 
         for (int i = 0; i < numbersTab.length; i++) {
-            result[i] = Integer.parseInt(numbersTab[i]);
+            result[i] = tryParseNumber(numbersTab[i]);
         }
         return result;
+    }
+
+    private static int tryParseNumber(String s) {
+        try {
+            return Integer.parseInt(s.trim());
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 }
