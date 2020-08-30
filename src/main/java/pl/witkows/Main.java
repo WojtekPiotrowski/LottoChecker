@@ -4,12 +4,18 @@ import com.google.gson.*;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import pl.witkows.api.HttpClientProvider;
+import pl.witkows.api.User;
+import pl.witkows.checkResult.FileInputSource;
+import pl.witkows.checkResult.ScannerInputSource;
+import pl.witkows.checkResult.UserInput;
 import pl.witkows.models.Games;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class Main {
     static Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new JsonDeserializer<LocalDateTime>() {
@@ -23,18 +29,19 @@ public class Main {
     }).create();
 
     public static void main(String[] args) throws IOException {
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client1 = HttpClientProvider.INSTANCE.getClient();
 
-        Request request = new Request.Builder()
-                .url("http://serwis.mobilotto.pl/mapi_v6/index.php?json=getGames")
-                .build();
-
-        Response response = client.newCall(request).execute();
-        String jsonString = response.body().string();
-
-        Games games = gson.fromJson(jsonString, Games.class);
-        games.getLotto().getNumerki();
-
-        System.out.println("Numery duzego lotka to: " + games.getLotto().getNumerki());
+        //
+//        Response response = client.newCall(request).execute();
+//        String jsonString = response.body().string();
+//
+//        Games games = gson.fromJson(jsonString, Games.class);
+//
+//        System.out.println("podaj twoje liczby oddzielajac przecinkiem");
+//
+//        UserInput userInput = new UserInput(new FileInputSource());
+//        int[] sortedNumbers = userInput.getSortedNumbers();
+//
+//        System.out.println(Arrays.toString(sortedNumbers));
     }
 }
