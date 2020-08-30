@@ -7,7 +7,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class GameData {
-
     @SerializedName("Lotto")
     @Expose
     private Game lotto;
@@ -37,4 +36,3 @@ public class GameData {
         return superszansa;
     }
 }
-

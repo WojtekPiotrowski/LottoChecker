@@ -7,19 +7,18 @@ import com.google.gson.annotations.SerializedName;
 import java.time.LocalDateTime;
 
 public class Game {
-
     @SerializedName("numerki")
     @Expose
     private String numerki;
     @SerializedName("num_losowania")
     @Expose
-    private long numLosowania;
+    private String numLosowania;
     @SerializedName("data_losowania")
     @Expose
     private LocalDateTime dataLosowania;
     @SerializedName("superszansa_id")
     @Expose
-    private double superszansaId;
+    private Object superszansaId;
 
     public String getNumerki() {
         return numerki;
@@ -29,11 +28,11 @@ public class Game {
         this.numerki = numerki;
     }
 
-    public long getNumLosowania() {
+    public String getNumLosowania() {
         return numLosowania;
     }
 
-    public void setNumLosowania(long numLosowania) {
+    public void setNumLosowania(String numLosowania) {
         this.numLosowania = numLosowania;
     }
 
@@ -41,16 +40,15 @@ public class Game {
         return dataLosowania;
     }
 
-    public void setDataLosowania(String dataLosowania) {
-        this.dataLosowania = LocalDateTime.parse(dataLosowania);
+    public void setDataLosowania(LocalDateTime dataLosowania) {
+        this.dataLosowania = dataLosowania;
     }
 
-    public double getSuperszansaId() {
+    public Object getSuperszansaId() {
         return superszansaId;
     }
 
-    public void setSuperszansaId(double superszansaId) {
+    public void setSuperszansaId(Object superszansaId) {
         this.superszansaId = superszansaId;
     }
-
 }
