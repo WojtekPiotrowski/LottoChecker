@@ -1,34 +1,25 @@
 
-package pl.piotrowski;
+package pl.piotrowski.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class MM1 {
+import java.time.LocalDateTime;
 
-    @SerializedName("plus")
-    @Expose
-    private String plus;
+public class Game {
+
     @SerializedName("numerki")
     @Expose
     private String numerki;
     @SerializedName("num_losowania")
     @Expose
-    private String numLosowania;
+    private long numLosowania;
     @SerializedName("data_losowania")
     @Expose
-    private String dataLosowania;
+    private LocalDateTime dataLosowania;
     @SerializedName("superszansa_id")
     @Expose
-    private String superszansaId;
-
-    public String getPlus() {
-        return plus;
-    }
-
-    public void setPlus(String plus) {
-        this.plus = plus;
-    }
+    private double superszansaId;
 
     public String getNumerki() {
         return numerki;
@@ -38,27 +29,27 @@ public class MM1 {
         this.numerki = numerki;
     }
 
-    public String getNumLosowania() {
+    public long getNumLosowania() {
         return numLosowania;
     }
 
-    public void setNumLosowania(String numLosowania) {
+    public void setNumLosowania(long numLosowania) {
         this.numLosowania = numLosowania;
     }
 
-    public String getDataLosowania() {
+    public LocalDateTime getDataLosowania() {
         return dataLosowania;
     }
 
     public void setDataLosowania(String dataLosowania) {
-        this.dataLosowania = dataLosowania;
+        this.dataLosowania = LocalDateTime.parse(dataLosowania);
     }
 
-    public String getSuperszansaId() {
+    public double getSuperszansaId() {
         return superszansaId;
     }
 
-    public void setSuperszansaId(String superszansaId) {
+    public void setSuperszansaId(double superszansaId) {
         this.superszansaId = superszansaId;
     }
 
