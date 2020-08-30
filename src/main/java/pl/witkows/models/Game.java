@@ -4,6 +4,8 @@ package pl.witkows.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.time.LocalDateTime;
+
 public class Game {
     @SerializedName("numerki")
     @Expose
@@ -13,7 +15,7 @@ public class Game {
     private String numLosowania;
     @SerializedName("data_losowania")
     @Expose
-    private String dataLosowania;
+    private LocalDateTime dataLosowania;
     @SerializedName("superszansa_id")
     @Expose
     private Object superszansaId;
@@ -34,11 +36,11 @@ public class Game {
         this.numLosowania = numLosowania;
     }
 
-    public String getDataLosowania() {
+    public LocalDateTime getDataLosowania() {
         return dataLosowania;
     }
 
-    public void setDataLosowania(String dataLosowania) {
+    public void setDataLosowania(LocalDateTime dataLosowania) {
         this.dataLosowania = dataLosowania;
     }
 
@@ -49,5 +51,4 @@ public class Game {
     public void setSuperszansaId(Object superszansaId) {
         this.superszansaId = superszansaId;
     }
-
 }
