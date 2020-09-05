@@ -37,6 +37,5 @@ public class Main {
 //        session.close();
 //        factory.close();
         Menu.displayMenu();
-
     }
 }

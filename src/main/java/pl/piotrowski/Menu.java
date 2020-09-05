@@ -2,9 +2,9 @@ package pl.piotrowski;
 
 import pl.piotrowski.checkResult.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-
 
 public class Menu {
 
@@ -25,12 +25,10 @@ public class Menu {
                 case 0: {
                     continuing = false;
                     break;
-
                 }
                 case 1: {
                     lottoMenu();
                 }
-
             }
         }
     }
@@ -54,47 +52,34 @@ public class Menu {
                     break;
                 }
                 case 1: {
-                    ScannerInputSource scannerInputSource = new ScannerInputSource();
-                    loadFromInputAndCheckWinner(scannerInputSource);
-                    System.out.println();
+                    loadFromInputAndCheckWinner(new ScannerInputSource());
                     break;
                 }
                 case 2: {
-                    InputSource inputSource = new RandomNumberGenerator(GameType.LOTTO);
-                    loadFromInputAndCheckWinner(inputSource);
+                    loadFromInputAndCheckWinner(new RandomNumberGenerator(GameType.LOTTO));
                     break;
                 }
                 case 3: {
-                    InputSource inputSource = new FileInputSource();
-                    loadFromInputAndCheckWinner(inputSource);
+                    loadFromInputAndCheckWinner(new FileInputSource());
                     break;
                 }
-                case 4:{
-                    System.out.println("Not ready yet");
-                }
-                
                 default: {
                     System.out.println("Nie ma takiego numeru");
                 }
-
             }
         }
     }
 
-    private static void loadFromInputAndCheckWinner(InputSource scannerInputSource) {
-        NumbersChecker numbersChecker = new NumbersChecker(scannerInputSource);
+    private static void loadFromInputAndCheckWinner(InputSource inputSource) {
+        NumbersChecker numbersChecker = new NumbersChecker(inputSource);
         List<Integer> matchNumbers = numbersChecker.checkLottoGame();
 
 
         System.out.println("pasujące liczby to: ");
-
         System.out.println(matchNumbers);
-
         System.out.println("Trafiłeś " + matchNumbers.size() + " liczb z 6");
         if (matchNumbers.size() == 6) {
             System.out.println("Brawo zostałeś milionerem");
         }
     }
-
-
 }
