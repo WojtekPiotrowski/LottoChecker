@@ -1,10 +1,8 @@
 package pl.piotrowski.checkResult;
 
-import pl.piotrowski.AppConfig;
+import pl.piotrowski.PropertiesManager;
 
-import java.util.Collection;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.Random;
 
 public class RandomNumberGenerator implements InputSource {
@@ -25,7 +23,7 @@ public class RandomNumberGenerator implements InputSource {
             randomNumbers.add(getRandomNumber());
         }
         StringBuilder stringBuilder = new StringBuilder();
-        randomNumbers.forEach(s -> stringBuilder.append(s).append(AppConfig.NUMBER_SEPARATOR));
+        randomNumbers.forEach(s -> stringBuilder.append(s).append(PropertiesManager.getProperty("NUMBER_SEPARATOR")));
         stringBuilder.deleteCharAt(stringBuilder.length() - 1);
 
         System.out.println("Twoje losowe liczby to: " + stringBuilder.toString());

@@ -1,22 +1,22 @@
 package pl.piotrowski.checkResult;
 
+import pl.piotrowski.PropertiesManager;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
-import static pl.piotrowski.AppConfig.FILE_NAME;
 
 public class FileInputSource implements InputSource {
 
     private final File file;
 
     public FileInputSource() {
-        file = new File(FILE_NAME);
+        file = new File(PropertiesManager.getProperty("FILE_NAME"));
     }
 
     @Override
     public String getInput() throws LottoFileNotFound {
-        System.out.println("Wczytuje liczby z pliku " + FILE_NAME);
+        System.out.println("Wczytuje liczby z pliku " + PropertiesManager.getProperty("FILE_NAME"));
         try {
             Scanner scanner = new Scanner(file);
             StringBuilder stringBuilder = new StringBuilder();

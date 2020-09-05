@@ -2,9 +2,7 @@ package pl.piotrowski.checkResult;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import pl.piotrowski.AppConfig;
-
-import javax.xml.bind.ValidationException;
+import pl.piotrowski.PropertiesManager;
 
 public class NumberConverter {
 
@@ -18,7 +16,7 @@ public class NumberConverter {
             return new int[0];
         }
 
-        String[] numbersTab = numbers.split(AppConfig.NUMBER_SEPARATOR);
+        String[] numbersTab = numbers.split(PropertiesManager.getProperty("NUMBER_SEPARATOR"));
         int[] result = new int[numbersTab.length];
 
         for (int i = 0; i < numbersTab.length; i++) {

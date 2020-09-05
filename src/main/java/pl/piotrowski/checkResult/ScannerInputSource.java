@@ -1,6 +1,6 @@
 package pl.piotrowski.checkResult;
 
-import pl.piotrowski.AppConfig;
+import pl.piotrowski.PropertiesManager;
 
 import java.util.Scanner;
 
@@ -13,7 +13,7 @@ public class ScannerInputSource implements InputSource {
 
     @Override
     public String getInput() {
-        System.out.println("Podaj swoje liczby oddzielajace je znakiem: " + AppConfig.NUMBER_SEPARATOR);
+        System.out.println("Podaj swoje liczby oddzielajace je znakiem: " + PropertiesManager.getProperty("NUMBER_SEPARATOR"));
         return scanner.nextLine();
     }
 }

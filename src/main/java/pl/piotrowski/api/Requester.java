@@ -1,13 +1,13 @@
 package pl.piotrowski.api;
 
 import okhttp3.Request;
-import static pl.piotrowski.AppConfig.ENDPOINT_URL;
+import pl.piotrowski.PropertiesManager;
 
 public class Requester {
 
     public Request getNewRequest() {
         return new Request.Builder()
-                .url(ENDPOINT_URL)
+                .url(PropertiesManager.getProperty("ENDPOINT_URL"))
                 .build();
     }
 }
