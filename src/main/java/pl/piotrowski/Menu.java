@@ -2,6 +2,7 @@ package pl.piotrowski;
 
 import pl.piotrowski.checkResult.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -28,15 +29,43 @@ public class Menu {
                 }
                 case 1: {
                     lottoMenu();
+                    break;
+                }
+                case 2: {
+                    lottoPlusMenu();
+                    break;
+                }
+                case 3: {
+                    superSzansaMenu();
+                    break;
+                }
+                case 4: {
+                    miniLottoMenu();
+                    break;
                 }
             }
         }
     }
 
     private static void lottoMenu() {
+        genericLottoMenu(GameType.LOTTO);
+    }
+
+    private static void lottoPlusMenu() {
+        genericLottoMenu(GameType.LOTTO_PLUS);
+    }
+
+    private static void miniLottoMenu() {
+        genericLottoMenu(GameType.MINI_LOTTO);
+    }
+
+    private static void genericLottoMenu(GameType gameType) {
         boolean continuing = true;
+
+        String gameName = gameType.toString(); //"MINI_LOTTO"
+
         while (continuing) {
-            System.out.println("Wybrałeś lotto");
+            System.out.println("Wybrałeś " + gameName);
             System.out.println("Wybierz jedną z opcji : ");
             System.out.println("1. Wpisz swoje szczęśliwe liczby");
             System.out.println("2. Wylosuj te liczby");
@@ -52,15 +81,15 @@ public class Menu {
                     break;
                 }
                 case 1: {
-                    loadFromInputAndCheckWinner(new ScannerInputSource());
+                    loadFromInputAndCheckWinner(new ScannerInputSource(), gameType);
                     break;
                 }
                 case 2: {
-                    loadFromInputAndCheckWinner(new RandomNumberGenerator(GameType.LOTTO));
+                    loadFromInputAndCheckWinner(new RandomNumberGenerator(gameType), gameType);
                     break;
                 }
                 case 3: {
-                    loadFromInputAndCheckWinner(new FileInputSource());
+                    loadFromInputAndCheckWinner(new FileInputSource(), gameType);
                     break;
                 }
                 default: {
@@ -70,16 +99,28 @@ public class Menu {
         }
     }
 
-    private static void loadFromInputAndCheckWinner(InputSource inputSource) {
+    private static void loadFromInputAndCheckWinner(InputSource inputSource, GameType gameType) {
         NumbersChecker numbersChecker = new NumbersChecker(inputSource);
-        List<Integer> matchNumbers = numbersChecker.checkLottoGame();
+        List<Integer> matchNumbers = new ArrayList<>();
 
+        if (gameType.equals(GameType.LOTTO)) {
+            matchNumbers = numbersChecker.checkLottoGame();
+        } else if (gameType.equals(GameType.LOTTO_PLUS)) {
+            matchNumbers = numbersChecker.checkLottoPlusGame();
+        } else if (gameType.equals(GameType.MINI_LOTTO)) {
+            matchNumbers = numbersChecker.checkMiniLottoGame();
+        }
 
         System.out.println("pasujące liczby to: ");
         System.out.println(matchNumbers);
-        System.out.println("Trafiłeś " + matchNumbers.size() + " liczb z 6");
-        if (matchNumbers.size() == 6) {
+        System.out.println("Trafiłeś " + matchNumbers.size() + " liczb z " + gameType.maxNumbers);
+
+        if (matchNumbers.size() == gameType.maxNumbers) {
             System.out.println("Brawo zostałeś milionerem");
         }
+    }
+
+    private static void superSzansaMenu() {
+        System.out.println("Not implemented yet");
     }
 }

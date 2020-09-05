@@ -21,6 +21,11 @@ public class NumbersChecker {
         return checkGame(games.getLotto());
     }
 
+    public List<Integer> checkLottoPlusGame() {
+        Games games = gamesApi.getNewestGames();
+        return checkGame(games.getLottoPlus());
+    }
+
     public List<Integer> checkMiniLottoGame() {
         Games games = gamesApi.getNewestGames();
         return checkGame(games.getMini());
