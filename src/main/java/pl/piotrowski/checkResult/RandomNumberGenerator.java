@@ -2,6 +2,8 @@ package pl.piotrowski.checkResult;
 
 import pl.piotrowski.AppConfig;
 
+import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.Random;
 
 public class RandomNumberGenerator implements InputSource {

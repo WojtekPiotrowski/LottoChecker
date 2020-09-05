@@ -1,5 +1,5 @@
 package pl.piotrowski.checkResult;
 
 public interface InputSource {
-    String getInput();
+    String getInput() throws LottoFileNotFound;
 }

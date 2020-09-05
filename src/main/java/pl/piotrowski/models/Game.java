@@ -4,6 +4,7 @@ package pl.piotrowski.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import pl.piotrowski.checkResult.NumberConverter;
+import pl.piotrowski.checkResult.NumberValidationException;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -58,7 +59,7 @@ public class Game {
         return superszansaId;
     }
 
-    public int[] getSortedNumbers() {
+    public int[] getSortedNumbers() throws NumberValidationException {
         return NumberConverter.parseToIntTab(numerki);
     }
 

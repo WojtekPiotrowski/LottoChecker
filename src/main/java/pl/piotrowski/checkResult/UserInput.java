@@ -9,7 +9,7 @@ public class UserInput {
         this.inputSource = inputSource;
     }
 
-    public int[] getSortedNumbers() {
+    public int[] getSortedNumbers() throws NumberValidationException, LottoFileNotFound {
         String numbers = inputSource.getInput();
         int[] result = NumberConverter.parseToIntTab(numbers);
         Arrays.sort(result);

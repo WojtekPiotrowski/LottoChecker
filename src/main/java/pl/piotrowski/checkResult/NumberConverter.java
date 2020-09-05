@@ -4,6 +4,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import pl.piotrowski.AppConfig;
 
+import javax.xml.bind.ValidationException;
+
 public class NumberConverter {
 
     private NumberConverter() {
@@ -11,7 +13,7 @@ public class NumberConverter {
     }
 
     @NotNull
-    public static int[] parseToIntTab(@Nullable String numbers) {
+    public static int[] parseToIntTab(@Nullable String numbers) throws NumberValidationException {
         if (numbers == null || numbers.isEmpty()) {
             return new int[0];
         }
@@ -25,11 +27,11 @@ public class NumberConverter {
         return result;
     }
 
-    private static int tryParseNumber(String s) {
+    private static int tryParseNumber(String s) throws NumberValidationException {
         try {
             return Integer.parseInt(s.trim());
         } catch (NumberFormatException e) {
-            return 0;
+            throw new NumberValidationException("Podano niewłaściwe liczby!");
         }
     }
 }

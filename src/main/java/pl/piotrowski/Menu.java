@@ -20,8 +20,11 @@ public class Menu {
             System.out.println("4. Mini-lotto");
             System.out.println("0. aby zakończyć grę");
             Scanner scanner = new Scanner(System.in);
-            int answer = scanner.nextInt();
+            int answer = -1;
 
+            if (scanner.hasNextInt()) {
+                answer= scanner.nextInt();
+            }
             switch (answer) {
                 case 0: {
                     continuing = false;
@@ -73,7 +76,11 @@ public class Menu {
             System.out.println("4. Wyświetl historię gier");
             System.out.println("0. aby powrócić do menu głównego");
             Scanner scanner = new Scanner(System.in);
-            int answer = scanner.nextInt();
+            int answer = -1;
+
+            if (scanner.hasNextInt()) {
+                answer= scanner.nextInt();
+            }
 
             switch (answer) {
                 case 0: {
@@ -99,24 +106,29 @@ public class Menu {
         }
     }
 
-    private static void loadFromInputAndCheckWinner(InputSource inputSource, GameType gameType) {
-        NumbersChecker numbersChecker = new NumbersChecker(inputSource);
-        List<Integer> matchNumbers = new ArrayList<>();
+    private static void loadFromInputAndCheckWinner(InputSource inputSource, GameType gameType)  {
+        try {
 
-        if (gameType.equals(GameType.LOTTO)) {
-            matchNumbers = numbersChecker.checkLottoGame();
-        } else if (gameType.equals(GameType.LOTTO_PLUS)) {
-            matchNumbers = numbersChecker.checkLottoPlusGame();
-        } else if (gameType.equals(GameType.MINI_LOTTO)) {
-            matchNumbers = numbersChecker.checkMiniLottoGame();
-        }
+            NumbersChecker numbersChecker = new NumbersChecker(inputSource);
+            List<Integer> matchNumbers = new ArrayList<>();
 
-        System.out.println("pasujące liczby to: ");
-        System.out.println(matchNumbers);
-        System.out.println("Trafiłeś " + matchNumbers.size() + " liczb z " + gameType.maxNumbers);
+            if (gameType.equals(GameType.LOTTO)) {
+                matchNumbers = numbersChecker.checkLottoGame();
+            } else if (gameType.equals(GameType.LOTTO_PLUS)) {
+                matchNumbers = numbersChecker.checkLottoPlusGame();
+            } else if (gameType.equals(GameType.MINI_LOTTO)) {
+                matchNumbers = numbersChecker.checkMiniLottoGame();
+            }
 
-        if (matchNumbers.size() == gameType.maxNumbers) {
-            System.out.println("Brawo zostałeś milionerem");
+            System.out.println("pasujące liczby to: ");
+            System.out.println(matchNumbers);
+            System.out.println("Trafiłeś " + matchNumbers.size() + " liczb z " + gameType.maxNumbers);
+
+            if (matchNumbers.size() == gameType.maxNumbers) {
+                System.out.println("Brawo zostałeś milionerem");
+            }
+        } catch (NumberValidationException | LottoFileNotFound e) {
+            System.out.println(e.getMessage());
         }
     }
 

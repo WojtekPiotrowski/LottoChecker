@@ -15,7 +15,7 @@ public class FileInputSource implements InputSource {
     }
 
     @Override
-    public String getInput() {
+    public String getInput() throws LottoFileNotFound {
         System.out.println("Wczytuje liczby z pliku " + FILE_NAME);
         try {
             Scanner scanner = new Scanner(file);
@@ -27,8 +27,7 @@ public class FileInputSource implements InputSource {
 
             return stringBuilder.toString();
         } catch (FileNotFoundException e) {
-            System.out.println("Nie udalo sie otworzyc pliku");
-            return "";
+            throw new LottoFileNotFound("Pod daną ścieżką nie znaleziono pliku");
         }
     }
 }

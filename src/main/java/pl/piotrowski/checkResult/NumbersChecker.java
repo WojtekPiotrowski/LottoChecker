@@ -16,24 +16,30 @@ public class NumbersChecker {
         userinput = new UserInput(source);
     }
 
-    public List<Integer> checkLottoGame() {
+    public List<Integer> checkLottoGame() throws NumberValidationException, LottoFileNotFound {
         Games games = gamesApi.getNewestGames();
-        return checkGame(games.getLotto());
+        return checkGame(games.getLotto(),GameType.LOTTO);
     }
 
-    public List<Integer> checkLottoPlusGame() {
+    public List<Integer> checkLottoPlusGame() throws NumberValidationException, LottoFileNotFound {
         Games games = gamesApi.getNewestGames();
-        return checkGame(games.getLottoPlus());
+        return checkGame(games.getLottoPlus(),GameType.LOTTO_PLUS);
     }
 
-    public List<Integer> checkMiniLottoGame() {
+    public List<Integer> checkMiniLottoGame() throws NumberValidationException, LottoFileNotFound {
         Games games = gamesApi.getNewestGames();
-        return checkGame(games.getMini());
+        return checkGame(games.getMini(),GameType.MINI_LOTTO);
     }
 
-    private List<Integer> checkGame(Game game) {
+    private List<Integer> checkGame(Game game,GameType type) throws NumberValidationException, LottoFileNotFound {
         int[] gameNumbers = game.getSortedNumbers();
         int[] userNumbers = userinput.getSortedNumbers();
+
+
+        ValidationNumbers.validateUserNumbers(userNumbers, type);
+
+
+
         List<Integer> winNumbers = new ArrayList<>(gameNumbers.length);
 
         for (int gameNumber : gameNumbers) {
