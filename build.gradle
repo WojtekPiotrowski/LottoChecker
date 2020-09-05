@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'pl.witkows'
+group 'pl.piotrowski'
 version '1.0-SNAPSHOT'
 
 repositories {
