@@ -1,8 +1,8 @@
-package pl.witkows.checkResult;
+package pl.piotrowski.checkResult;
 
-import pl.witkows.api.LottoGamesApi;
-import pl.witkows.models.Game;
-import pl.witkows.models.Games;
+import pl.piotrowski.api.LottoGamesApi;
+import pl.piotrowski.models.Game;
+import pl.piotrowski.models.Games;
 
 import java.util.ArrayList;
 import java.util.List;

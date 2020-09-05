@@ -1,4 +1,6 @@
-package pl.witkows.checkResult;
+package pl.piotrowski.checkResult;
+
+import pl.piotrowski.AppConfig;
 
 import java.util.Scanner;
 
@@ -11,7 +13,7 @@ public class ScannerInputSource implements InputSource {
 
     @Override
     public String getInput() {
-        System.out.println("Podaj swoje liczby oddzielajace je przecinkami");
+        System.out.println("Podaj swoje liczby oddzielajace je znakiem: " + AppConfig.NUMBER_SEPARATOR);
         return scanner.nextLine();
     }
 }

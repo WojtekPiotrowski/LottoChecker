@@ -1,10 +1,10 @@
-package pl.witkows.api;
+package pl.piotrowski.api;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import pl.witkows.api.coverter.JsonDataConverter;
-import pl.witkows.models.Games;
+import pl.piotrowski.api.coverter.JsonDataConverter;
+import pl.piotrowski.models.Games;
 
 import java.io.IOException;
 

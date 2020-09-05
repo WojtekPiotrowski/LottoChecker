@@ -1,4 +1,4 @@
-package pl.witkows.checkResult;
+package pl.piotrowski.checkResult;
 
 import org.junit.Assert;
 import org.junit.Before;

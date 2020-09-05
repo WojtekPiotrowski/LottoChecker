@@ -1,4 +1,4 @@
-package pl.witkows.checkResult;
+package pl.piotrowski.checkResult;
 
 import java.io.File;
 import java.io.FileNotFoundException;

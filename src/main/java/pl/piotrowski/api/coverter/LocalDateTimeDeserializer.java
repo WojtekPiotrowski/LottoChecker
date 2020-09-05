@@ -1,4 +1,4 @@
-package pl.witkows.api.coverter;
+package pl.piotrowski.api.coverter;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;

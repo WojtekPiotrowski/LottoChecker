@@ -1,9 +1,9 @@
 
-package pl.witkows.models;
+package pl.piotrowski.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import pl.witkows.checkResult.NumberConverter;
+import pl.piotrowski.checkResult.NumberConverter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

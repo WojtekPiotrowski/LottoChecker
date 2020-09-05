@@ -1,4 +1,4 @@
-package pl.witkows.api;
+package pl.piotrowski.api;
 
 import okhttp3.OkHttpClient;
 

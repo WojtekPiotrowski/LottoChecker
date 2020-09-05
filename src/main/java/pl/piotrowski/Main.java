@@ -1,4 +1,4 @@
-package pl.witkows;
+package pl.piotrowski;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -7,7 +7,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import pl.witkows.models.Game;
+import pl.piotrowski.models.Game;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -27,7 +27,7 @@ public class Main {
 
         Transaction transaction = session.beginTransaction();
 
-//        session.save(myGame);
+        session.save(myGame);
         Game gameFromDb = session.get(Game.class, "1");
         System.out.println(gameFromDb);
 

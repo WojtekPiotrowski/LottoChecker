@@ -1,8 +1,8 @@
-package pl.witkows.api.coverter;
+package pl.piotrowski.api.coverter;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import pl.witkows.models.Games;
+import pl.piotrowski.models.Games;
 
 import java.time.LocalDateTime;
 

@@ -1,4 +1,4 @@
-package pl.witkows.checkResult;
+package pl.piotrowski.checkResult;
 
 public enum GameType {
     LOTTO(6),

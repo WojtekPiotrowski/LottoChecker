@@ -1,8 +1,8 @@
-package pl.witkows.checkResult;
+package pl.piotrowski.checkResult;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import pl.witkows.AppConfig;
+import pl.piotrowski.AppConfig;
 
 public class NumberConverter {
 

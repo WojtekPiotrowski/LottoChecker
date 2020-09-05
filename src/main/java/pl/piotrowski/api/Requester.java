@@ -1,9 +1,9 @@
-package pl.witkows.api;
+package pl.piotrowski.api;
 
 import okhttp3.Request;
+import static pl.piotrowski.AppConfig.ENDPOINT_URL;
 
 public class Requester {
-    private static final String ENDPOINT_URL = "http://serwis.mobilotto.pl/mapi_v7/index.php?json=getGames";
 
     public Request getNewRequest() {
         return new Request.Builder()

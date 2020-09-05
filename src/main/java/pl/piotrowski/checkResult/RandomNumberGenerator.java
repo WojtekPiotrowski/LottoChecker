@@ -1,6 +1,6 @@
-package pl.witkows.checkResult;
+package pl.piotrowski.checkResult;
 
-import pl.witkows.AppConfig;
+import pl.piotrowski.AppConfig;
 
 import java.util.Random;
 
