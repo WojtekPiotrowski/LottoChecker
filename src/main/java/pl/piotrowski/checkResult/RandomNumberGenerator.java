@@ -3,11 +3,12 @@ package pl.piotrowski.checkResult;
 import pl.piotrowski.AppConfig;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Random;
 
 public class RandomNumberGenerator implements InputSource {
-    private static final int MAX_RANGE_IN_GAME = 46;
+    private static final int MAX_RANGE_IN_GAME = 49;
     private static final int MIN_RANGE_IN_GAME = 1;
     private final GameType type;
     private final Random random;
@@ -19,14 +20,15 @@ public class RandomNumberGenerator implements InputSource {
 
     @Override
     public String getInput() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < type.maxNumbers; i++) {
-            stringBuilder.append(getRandomNumber());
-            if (i < type.maxNumbers - 1) {
-                stringBuilder.append(AppConfig.NUMBER_SEPARATOR);
-            }
+        HashSet<Integer> randomNumbers = new HashSet<>();
+        while (randomNumbers.size() != type.maxNumbers) {
+            randomNumbers.add(getRandomNumber());
         }
+        StringBuilder stringBuilder = new StringBuilder();
+        randomNumbers.forEach(s -> stringBuilder.append(s).append(AppConfig.NUMBER_SEPARATOR));
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
 
+        System.out.println("Twoje losowe liczby to: " + stringBuilder.toString());
         return stringBuilder.toString();
     }
 

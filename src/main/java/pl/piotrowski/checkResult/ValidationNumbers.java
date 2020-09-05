@@ -19,14 +19,13 @@ public class ValidationNumbers {
 
     static void validateNumbersDistinction(int[] source) throws NumberValidationException {
 
-//        Collection<Integer> convertedArray = new LinkedHashSet<>();
-//        if (Arrays.stream(source).distinct().count() != source.length){
-//            throw new NumberValidationException("Liczby nie mogą się powtarzać!");
-//        }
-
-        if (new HashSet(Arrays.asList(source)).size() != source.length) {
+        if (Arrays.stream(source).distinct().count() != source.length){
             throw new NumberValidationException("Liczby nie mogą się powtarzać!");
         }
+
+//        if (new HashSet(Arrays.asList(source)).size() != source.length) {
+//            throw new NumberValidationException("Liczby nie mogą się powtarzać!");
+//        }
 
     }
 }

@@ -24,7 +24,7 @@ public class UserInputTest {
     }
 
     @Test
-    public void should_return_empty_array_when_input_is_null() {
+    public void should_return_empty_array_when_input_is_null() throws LottoFileNotFound{
         Mockito.when(inputSource.getInput()).thenReturn(null);
 
         int[] result = sut.getSortedNumbers();
