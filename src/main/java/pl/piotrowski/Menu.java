@@ -1,8 +1,11 @@
 package pl.piotrowski;
 
+import pl.piotrowski.checkResult.NumbersChecker;
 import pl.piotrowski.checkResult.ScannerInputSource;
 import pl.piotrowski.checkResult.UserInput;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -58,17 +61,29 @@ public class Menu {
                 }
                 case 1: {
                     ScannerInputSource scannerInputSource = new ScannerInputSource();
-                    UserInput userInput = new UserInput(scannerInputSource);
-                    int[] sortedNumbers = userInput.getSortedNumbers();
-                    System.out.println("Wpisałeś takie liczby: ");
-                    for (int liczby : sortedNumbers){
-                        System.out.print(liczby);
+
+
+                    NumbersChecker numbersChecker  = new NumbersChecker(scannerInputSource);
+                    List<Integer> matchNumbers = numbersChecker.checkLottoGame();
+
+
+                    System.out.println("pasujące liczby to: ");
+
+                    System.out.println(matchNumbers);
+
+                    System.out.println("Trafiłeś " + matchNumbers.size() + " liczb z 6");
+                    if(matchNumbers.size()==6){
+                        System.out.println("Brawo zostałeś milionerem");
                     }
+
+
+                    System.out.println();
                     break;
                 }
                 default:{
                     System.out.println("Nie ma takiego numeru");
                 }
+
 
 
             }

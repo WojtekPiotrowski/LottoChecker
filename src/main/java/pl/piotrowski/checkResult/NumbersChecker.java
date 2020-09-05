@@ -26,7 +26,7 @@ public class NumbersChecker {
         return checkGame(games.getMini());
     }
 
-    public List<Integer> checkGame(Game game) {
+    private List<Integer> checkGame(Game game) {
         int[] gameNumbers = game.getSortedNumbers();
         int[] userNumbers = userinput.getSortedNumbers();
         List<Integer> winNumbers = new ArrayList<>(gameNumbers.length);
