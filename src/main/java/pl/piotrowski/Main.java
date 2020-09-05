@@ -27,14 +27,16 @@ public class Main {
 
         Transaction transaction = session.beginTransaction();
 
-        session.save(myGame);
-        Game gameFromDb = session.get(Game.class, "1");
-        System.out.println(gameFromDb);
+//        session.save(myGame);
+//        Game gameFromDb = session.get(Game.class, "1");
+//        System.out.println(gameFromDb);
 
         transaction.commit();
 
         //Zamkniecie polaczenia z bazadanych
         session.close();
         factory.close();
+
+        Menu.displayMenu();
     }
 }
