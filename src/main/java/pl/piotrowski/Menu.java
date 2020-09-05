@@ -1,12 +1,10 @@
 package pl.piotrowski;
 
-import pl.piotrowski.checkResult.NumbersChecker;
-import pl.piotrowski.checkResult.ScannerInputSource;
-import pl.piotrowski.checkResult.UserInput;
+import pl.piotrowski.checkResult.*;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+
 
 public class Menu {
 
@@ -33,10 +31,7 @@ public class Menu {
                     lottoMenu();
                 }
 
-
             }
-
-
         }
     }
 
@@ -57,38 +52,47 @@ public class Menu {
                 case 0: {
                     continuing = false;
                     break;
-
                 }
                 case 1: {
                     ScannerInputSource scannerInputSource = new ScannerInputSource();
-
-
-                    NumbersChecker numbersChecker  = new NumbersChecker(scannerInputSource);
-                    List<Integer> matchNumbers = numbersChecker.checkLottoGame();
-
-
-                    System.out.println("pasujące liczby to: ");
-
-                    System.out.println(matchNumbers);
-
-                    System.out.println("Trafiłeś " + matchNumbers.size() + " liczb z 6");
-                    if(matchNumbers.size()==6){
-                        System.out.println("Brawo zostałeś milionerem");
-                    }
-
-
+                    loadFromInputAndCheckWinner(scannerInputSource);
                     System.out.println();
                     break;
                 }
-                default:{
+                case 2: {
+                    InputSource inputSource = new RandomNumberGenerator(GameType.LOTTO);
+                    loadFromInputAndCheckWinner(inputSource);
+                    break;
+                }
+                case 3: {
+                    InputSource inputSource = new FileInputSource();
+                    loadFromInputAndCheckWinner(inputSource);
+                    break;
+                }
+                case 4:{
+                    System.out.println("Not ready yet");
+                }
+                
+                default: {
                     System.out.println("Nie ma takiego numeru");
                 }
 
-
-
             }
+        }
+    }
+
+    private static void loadFromInputAndCheckWinner(InputSource scannerInputSource) {
+        NumbersChecker numbersChecker = new NumbersChecker(scannerInputSource);
+        List<Integer> matchNumbers = numbersChecker.checkLottoGame();
 
 
+        System.out.println("pasujące liczby to: ");
+
+        System.out.println(matchNumbers);
+
+        System.out.println("Trafiłeś " + matchNumbers.size() + " liczb z 6");
+        if (matchNumbers.size() == 6) {
+            System.out.println("Brawo zostałeś milionerem");
         }
     }
 
