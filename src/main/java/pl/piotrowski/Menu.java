@@ -1,9 +1,9 @@
 package pl.piotrowski;
 
 import pl.piotrowski.checkResult.*;
+import pl.piotrowski.contact.FirstNameValidator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,6 +18,7 @@ public class Menu {
             System.out.println("2. Lotto Plus");
             System.out.println("3. Super szansa");
             System.out.println("4. Mini-lotto");
+            System.out.println("5. Kontakt");
             System.out.println("0. aby zakończyć grę");
             Scanner scanner = new Scanner(System.in);
             int answer = -1;
@@ -46,12 +47,25 @@ public class Menu {
                     miniLottoMenu();
                     break;
                 }
+                case 5 :{
+                    System.out.println("Wybrales formularz kontaktowy");
+                    System.out.println("Podaj imie bez polkich znakow ");
+                    Scanner scanner1 = new Scanner(System.in);
+                    String firstName = scanner1.nextLine();
+                    FirstNameValidator.firstNameValidation(firstName);
+//                    System.out.println("Podaj nazwisko bez polich znaków");
+//                    Scanner scanner2 = new Scanner(System.in);
+//                    String lastName = scanner2.nextLine();
+                }
             }
         }
     }
 
     private static void lottoMenu() {
         genericLottoMenu(GameType.LOTTO);
+    }
+    private static void contact() {
+        genericLottoMenu(GameType.FORMULARZ_KONTAKTOWY);
     }
 
     private static void lottoPlusMenu() {
