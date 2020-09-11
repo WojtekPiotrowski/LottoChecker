@@ -1,9 +1,17 @@
 package pl.piotrowski;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import pl.piotrowski.checkResult.*;
 import pl.piotrowski.contact.EmailValidator;
 import pl.piotrowski.contact.FirstNameValidator;
 import pl.piotrowski.contact.LastNameValidator;
+import pl.piotrowski.contact.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +34,7 @@ public class Menu {
             int answer = -1;
 
             if (scanner.hasNextInt()) {
-                answer= scanner.nextInt();
+                answer = scanner.nextInt();
             }
             switch (answer) {
                 case 0: {
@@ -49,12 +57,27 @@ public class Menu {
                     miniLottoMenu();
                     break;
                 }
-                case 5 :{
+                case 5: {
                     System.out.println("Wybrales formularz kontaktowy");
                     System.out.println("Podaj imie bez polkich znakow ");
                     Scanner scanner1 = new Scanner(System.in);
                     String firstName = scanner1.nextLine();
                     FirstNameValidator.firstNameValidation(firstName);
+//                    User user = new User(firstName, null, null);
+//                    StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+//                    Metadata metadata = new MetadataSources(registry).buildMetadata();
+//                    SessionFactory factory = metadata.buildSessionFactory();
+//                    Session session = factory.openSession();
+//
+//                    Transaction transaction = session.beginTransaction();
+//
+//                    session.save(user);
+//                    transaction.commit();
+//
+//                    //Zamkniecie polaczenia z baza danych
+//                    session.close();
+//                    factory.close();
+
                     System.out.println("Podaj nazwisko bez polich znaków");
                     Scanner scanner2 = new Scanner(System.in);
                     String lastName = scanner2.nextLine();
@@ -63,6 +86,22 @@ public class Menu {
                     Scanner scanner3 = new Scanner(System.in);
                     String email = scanner3.nextLine();
                     EmailValidator.emailValidation(email);
+
+                    User user = new User(firstName, lastName, email);
+
+                    StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+                    Metadata metadata = new MetadataSources(registry).buildMetadata();
+                    SessionFactory factory = metadata.buildSessionFactory();
+                    //Zapisanie modelu do bazy danych
+                    Session session = factory.openSession();
+                    Transaction transaction = session.beginTransaction();
+                    session.save(user);
+                    transaction.commit();
+                    //Zamkniecie polaczenia z baza danych
+                    session.close();
+                    factory.close();
+
+
                 }
             }
         }
@@ -71,6 +110,7 @@ public class Menu {
     private static void lottoMenu() {
         genericLottoMenu(GameType.LOTTO);
     }
+
     private static void contact() {
         genericLottoMenu(GameType.FORMULARZ_KONTAKTOWY);
     }
@@ -100,7 +140,7 @@ public class Menu {
             int answer = -1;
 
             if (scanner.hasNextInt()) {
-                answer= scanner.nextInt();
+                answer = scanner.nextInt();
             }
 
             switch (answer) {
@@ -127,7 +167,7 @@ public class Menu {
         }
     }
 
-    private static void loadFromInputAndCheckWinner(InputSource inputSource, GameType gameType)  {
+    private static void loadFromInputAndCheckWinner(InputSource inputSource, GameType gameType) {
         try {
 
             NumbersChecker numbersChecker = new NumbersChecker(inputSource);
