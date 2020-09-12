@@ -1,7 +1,9 @@
 package pl.piotrowski;
 
 import pl.piotrowski.checkResult.*;
+import pl.piotrowski.contact.EmailValidator;
 import pl.piotrowski.contact.FirstNameValidator;
+import pl.piotrowski.contact.LastNameValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,9 +55,14 @@ public class Menu {
                     Scanner scanner1 = new Scanner(System.in);
                     String firstName = scanner1.nextLine();
                     FirstNameValidator.firstNameValidation(firstName);
-//                    System.out.println("Podaj nazwisko bez polich znaków");
-//                    Scanner scanner2 = new Scanner(System.in);
-//                    String lastName = scanner2.nextLine();
+                    System.out.println("Podaj nazwisko bez polich znaków");
+                    Scanner scanner2 = new Scanner(System.in);
+                    String lastName = scanner2.nextLine();
+                    LastNameValidator.lastNameValidation(lastName);
+                    System.out.println("podaj adres email");
+                    Scanner scanner3 = new Scanner(System.in);
+                    String email = scanner3.nextLine();
+                    EmailValidator.emailValidation(email);
                 }
             }
         }

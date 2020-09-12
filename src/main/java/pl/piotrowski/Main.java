@@ -7,6 +7,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import pl.piotrowski.contact.FirstNameValidator;
 import pl.piotrowski.models.Game;
 
 import java.io.IOException;
@@ -15,9 +16,9 @@ import java.time.LocalDateTime;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-//        Game myGame = new Game("2", "6,7,8,9,10", LocalDateTime.now(), null);
+//        Game myGame = new Game("3", "6,7,8,9,10", LocalDateTime.now(), null);
 //
-        //Polaczenia z baza danych
+////        Polaczenia z baza danych
 //        StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
 //        Metadata metadata = new MetadataSources(registry).buildMetadata();
 //        SessionFactory factory = metadata.buildSessionFactory();
@@ -27,9 +28,9 @@ public class Main {
 //
 //        Transaction transaction = session.beginTransaction();
 //
-////        session.save(myGame);
-//        Game gameFromDb = session.get(Game.class, "1");
-//        System.out.println(gameFromDb);
+//        session.save(myGame);
+////        Game gameFromDb = session.get(Game.class, "1");
+////        System.out.println(gameFromDb);
 //
 //        transaction.commit();
 //
